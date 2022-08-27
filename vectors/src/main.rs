@@ -36,7 +36,6 @@ fn main() {
     }
 
     //Enum with vector
-
     enum SpreadsheetCell {
         Int(i32),
         Float(f64),
