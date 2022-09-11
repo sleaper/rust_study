@@ -37,10 +37,24 @@ fn main() {
                 println!("Adding {} to {}", name, department);
             }
             "List" => {
+                // FIX: List "" // no text throw error
                 let department = words.next().unwrap();
-                println!("Listing employees of {:?}", db);
+                match db.get(department) {
+                    Some(employees) => {
+                        println!("Employees of {}: {:?}", department, employees);
+                    }
+                    None => {
+                        println!("No employees in {}", department);
+                    }
+                }
             }
             "All" => {
+                let mut all_employees: Vec<String> = Vec::new();
+                for (department, employees) in &db {
+                    employees.iter().for_each(|employee| {
+                        all_employees.push(format!("{}: {}", department, employee));
+                    });
+                }
                 println!("Listing all employees by department");
             }
             "Quit" => {
