@@ -29,7 +29,6 @@ fn main() {
                 if db.contains_key(department) {
                     db.get_mut(department).unwrap().push(name.to_string());
                 } else {
-                    // TODO: Maybe ask here if we want to create ne department
                     db.insert(department.to_string(), vec![name.to_string()]);
                 }
 
@@ -50,12 +49,14 @@ fn main() {
             }
             "All" => {
                 let mut all_employees: Vec<String> = Vec::new();
-                for (department, employees) in &db {
+                for (_department, employees) in &db {
                     employees.iter().for_each(|employee| {
-                        all_employees.push(format!("{}: {}", department, employee));
+                        all_employees.push(employee.to_string());
                     });
                 }
-                println!("Listing all employees by department");
+
+                all_employees.sort();
+                println!("All employees: {:?}", all_employees);
             }
             "Quit" => {
                 println!("Quitting");
