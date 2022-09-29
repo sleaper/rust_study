@@ -1,0 +1,28 @@
+// Different generic types
+struct Point<T, U> {
+    x: T,
+    y: U,
+}
+
+fn main() {
+    let number_list = vec![34, 50, 25, 100, 65];
+
+    // We can create Point with different types
+    let point = Point { x: 5, y: 10.4 };
+
+    let result = largest(&number_list);
+    println!("The largest number is {}", result);
+}
+
+// Generic Data Type
+fn largest<T: std::cmp::PartialOrd>(list: &[T]) -> &T {
+    let mut largest = &list[0];
+
+    for i in list {
+        if i > largest {
+            largest = i;
+        }
+    }
+
+    largest
+}
