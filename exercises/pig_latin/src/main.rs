@@ -13,6 +13,7 @@ fn main() {
     let mut pig_latin = String::new();
     let c = word.chars().nth(0).unwrap();
 
+    //TODO: Maybe optimize this
     if c == 'a' || c == 'e' || c == 'i' || c == 'o' || c == 'u' {
         pig_latin.push_str(&word[..]);
         pig_latin.push_str("-hay");
