@@ -4,6 +4,17 @@ struct Point<T, U> {
     y: U,
 }
 
+impl<T, U> Point<T, U> {
+    fn x(&self) -> &T {
+        &self.x
+    }
+}
+
+enum Option<T, E> {
+    Some(T),
+    None(E),
+}
+
 fn main() {
     let number_list = vec![34, 50, 25, 100, 65];
 
@@ -12,6 +23,7 @@ fn main() {
 
     let result = largest(&number_list);
     println!("The largest number is {}", result);
+    println!("p.x = {}", point.x());
 }
 
 // Generic Data Type
